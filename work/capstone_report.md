@@ -17,56 +17,46 @@ what the output is for. This is the top of your deployed paper.
 
 ## 1. Problem framing
 
-What decision does this support? Name the unit of analysis (page, client, day…), the output
-(score, rank, cluster, report), the action a human takes from it, and the cost of a wrong
-call. Why does data/ML help here at all?
+The goal of this project is to find pages that may need a CTR review. The unit of analysis is a content page, and the output is a priority ranking. This ranking can help an editor decide which pages to review first. A wrong ranking could give priority to a page that does not really need review. Using search data helps compare many pages in a consistent way.
 
 ## 2. Data safety
 
-Which data you used and which columns you deliberately excluded (and why). Leakage risks you
-considered — especially label-derived fields (`trend_direction`, `trend_pct`) and pseudonymous
-IDs (grouping only, never features). Confirm nothing client-identifying appears anywhere in
-`work/`.
+I used search performance data such as impressions, clicks, CTR and average position. I did not use client names, URLs or private search queries. Content IDs were only used to identify pages and were not used as features. I also avoided fields such as trend direction and trend pct to reduce the risk of data leakage. No client identifying information is included in the work.
 
 ## 3. Baseline
-
-The transparent rule or score you built first. Why it's a fair comparison, and its numbers on
-the same data and metric as your model.
+The Week 4 baseline ranked pages using impressions and the gap between expected CTR and actual CTR. Pages with many impressions and lower than expected CTR received a higher score. This was a fair baseline because it used the same search data and the same validation period as the Week 5 ranking method. The baseline gave each page a score and a rank that could be compared with the new ranking.
 
 ## 4. Model / analysis
 
-Your method and why it fits the lane. The exact feature list (and what you left out on
-purpose). The target or proxy definition, in one sentence.
+I used a ranking analysis because my goal is to find pages that may need review. I used impressions, CTR, and average search position to create a priority score. I did not use client information or private data. The priority score is used to rank pages for review.
+
 
 ## 5. Evaluation
 
-Your split (grouped by client? time-aware?) and why. Metrics, model vs baseline **on the same
-split**. What the errors look like — a short error analysis beats a big metric table.
+I used a time-aware split. Earlier March data was used first, and the last week of March was used for validation. I compared the new ranking with the Week 4 baseline using the same validation data. The new ranking changed the priority of many pages, especially pages that had a low baseline score.
 
 ## 6. Interpretation
 
-What the model/clusters actually found. Feature importances or cluster profiles in plain
-words. Surprises and negative results — a well-understood "no effect" is a valid result.
+The new ranking found some pages that the baseline did not give high priority. Using CTR and average search position changed the ranking of many pages. This shows that using more than one search signal can help find different pages for review.
 
 ## 7. Recommendation
 
-The ranked actions or decisions your output supports, and how a FlyRank editor would use them
-tomorrow. State your confidence and the limits explicitly.
+The ranking can help editors decide which pages to review first. Pages with higher priority scores can be checked for possible improvements. The ranking is a decision-support tool and should not be used as a final decision.
 
 ## 8. Reproducibility
 
-The exact commands to re-run everything from a fresh clone, your random seeds, and your
-environment (`pip freeze` highlights or `requirements.txt` deltas). If you claim a sealed or
-holdout evaluation, two things must be committed: the cell/script that builds the sealed
-frame, and the metrics file it produced — "evaluated once, blind" should be checkable from
-your repo, not taken on faith.
+The project can be reproduced from the public GitHub repository.
+
+```bash
+git clone https://github.com/engyelgamal18/flyrank-ml-internship-engy.git
+cd flyrank-ml-internship-engy
+pip install -r requirements.txt
+```
+The notebooks can be run from work/notebooks/. The FlyRank dataset requires a Hugging Face read token saved as HF_TOKEN. I did not use a random seed because this project uses ranking analysis and does not train a random model. I did not use a sealed holdout test.
 
 ## 9. Acknowledgments & data credit
 
-One short section at the bottom of the deployed paper: "Built on the FlyRank ML Internship
-dataset" **linking to https://flyrank.ai**. Crediting your data source is standard research
-practice — and it's on the capstone's required-section list, so a paper without it isn't done.
-
+Built on the [FlyRank ML Internship dataset](https://flyrank.ai/]
 ---
 
 > **Claims checklist before submitting:** observed / measured / directional / decision-support
