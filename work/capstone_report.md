@@ -26,26 +26,38 @@ I used a ranking analysis because my goal is to find pages that may need review.
 
 ## 5. Evaluation
 
-I used a time-aware split. Data from March 1 to March 24 was used as the earlier period and March 25 to March 31 was used for validation. I compared the new ranking with the Week 4 baseline using the same validation data. The new ranking changed the priority of many pages, especially pages that had a low baseline score.
+The Week 4 baseline and the new ranking were compared using the same validation period: March 25–31, 2026. The new method changed the priority of many pages. For example, one page moved from baseline rank 136 to new rank 1. Another page moved from baseline rank 300 to new rank 9. Some pages with a baseline score of zero also moved to the top of the new ranking. This shows that the new method can find review opportunities that the baseline may miss. These results are directional. The ranking is a decision-support tool and does not prove that the new method is always better.
 
 ## 6. Interpretation
 
-The new ranking found some pages that the baseline did not give high priority. Using CTR and average search position changed the ranking of many pages. This shows that using more than one search signal can help find different pages for review.
+This analysis has some limitations. The priority ranking is based only on search performance signals such as impressions, CTR and average position. It does not include content quality, conversions or business value. A high priority score does not prove that changing a page will improve its CTR. The ranking should be used as a guide to help editors decide which pages to review first. The analysis is limited to March 2026 data, so the ranking should be reviewed again when newer data becomes available.
 
 ## 7. Recommendation
 
-The ranking can help editors decide which pages to review first. Pages with higher priority scores can be checked for possible improvements. The ranking is a decision-support tool and should not be used as a final decision.
+The highest-ranked pages should be reviewed first. These pages have a combination of high impressions, low CTR, and weaker average search position.
+Editors can review the page title, metadata, and content to look for possible CTR improvements.
+Pages that moved much higher in the new ranking than in the baseline should receive extra attention because the new method identified them as higher-priority review opportunities. These recommendations are a guide and not an automatic decision.
 
 ## 8. Reproducibility
 
-The project can be reproduced from the public GitHub repository.
+The full project is available in the public GitHub repository:
+
+https://github.com/engyelgamal18/flyrank-ml-internship-engy
+
+The main capstone notebook is available at:
+
+work/notebooks/capstone.ipynb
+
+The supporting weekly notebooks are also available in the work/notebooks/ folder.
+
+To reproduce the environment:
 
 ```bash
 git clone https://github.com/engyelgamal18/flyrank-ml-internship-engy.git
 cd flyrank-ml-internship-engy
 pip install -r requirements.txt
 ```
-The notebooks can be run from the work/notebooks/ folder. The FlyRank dataset requires a Hugging Face read token saved as HF_TOKEN. This project uses ranking analysis and does not train a random model, so I did not use a random seed. I did not use a sealed holdout test.
+The FlyRank dataset requires a Hugging Face read token saved as HF_TOKEN. This project uses ranking analysis and does not train a random model, so I did not use a random seed. I did not use a sealed holdout test.
 
 ## 9. Acknowledgments & data credit
 
