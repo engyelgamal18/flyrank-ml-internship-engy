@@ -50,6 +50,5 @@ The notebooks can be run from the work/notebooks/ folder. The FlyRank dataset re
 ## 9. Acknowledgments & data credit
 
 Built on the [FlyRank ML Internship dataset](https://flyrank.ai/)
-
-
+---
 
