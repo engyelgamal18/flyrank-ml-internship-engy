@@ -12,8 +12,7 @@
 
 ## 0. Abstract
 
-Five sentences, written last, placed first: question → data → method → headline result →
-what the output is for. This is the top of your deployed paper.
+This project studies how search performance signals can help identify content pages that may need review. I used March 2026 search performance data and evaluated the ranking on the validation period from March 25 to March 31. I created a priority ranking using impressions, CTR and average search position, and compared it with the Week 4 baseline on the same validation period. The new ranking changed the priority of several pages, showing that combining multiple search signals can identify different review opportunities than the baseline. The final ranking is intended as a decision-support tool to help editors decide which pages to review first.
 
 ## 1. Problem framing
 
@@ -28,12 +27,11 @@ The Week 4 baseline ranked pages using impressions and the gap between expected 
 
 ## 4. Model / analysis
 
-I used a ranking analysis because my goal is to find pages that may need review. I used impressions, CTR, and average search position to create a priority score. I did not use client information or private data. The priority score is used to rank pages for review.
-
+I used a ranking analysis because my goal is to find pages that may need review. I used impressions, CTR, and average search position to create a priority score. I did not use client information or private data. I used a time-aware split, with March 1–24 as the earlier period and March 25–31 for validation. The priority score is used to rank pages for review.
 
 ## 5. Evaluation
 
-I used a time-aware split. Earlier March data was used first, and the last week of March was used for validation. I compared the new ranking with the Week 4 baseline using the same validation data. The new ranking changed the priority of many pages, especially pages that had a low baseline score.
+I used a time-aware split. Data from March 1 to March 24 was used as the earlier period and March 25 to March 31 was used for validation. I compared the new ranking with the Week 4 baseline using the same validation data. The new ranking changed the priority of many pages, especially pages that had a low baseline score.
 
 ## 6. Interpretation
 
@@ -52,17 +50,11 @@ git clone https://github.com/engyelgamal18/flyrank-ml-internship-engy.git
 cd flyrank-ml-internship-engy
 pip install -r requirements.txt
 ```
-The notebooks can be run from work/notebooks/. The FlyRank dataset requires a Hugging Face read token saved as HF_TOKEN. I did not use a random seed because this project uses ranking analysis and does not train a random model. I did not use a sealed holdout test.
+The notebooks can be run from the work/notebooks/ folder. The FlyRank dataset requires a Hugging Face read token saved as HF_TOKEN. This project uses ranking analysis and does not train a random model, so I did not use a random seed. I did not use a sealed holdout test.
 
 ## 9. Acknowledgments & data credit
 
-Built on the [FlyRank ML Internship dataset](https://flyrank.ai/]
+Built on the [FlyRank ML Internship dataset](https://flyrank.ai/)
 ---
 
-> **Claims checklist before submitting:** observed / measured / directional / decision-support
-> **Metrics vs. base rate:** report your task's base rate (majority-class %) next to any
-> precision@K or accuracy — a high score can just be a high base rate. AUC / lift over
-> baseline are the honest discrimination numbers.
-> language everywhere · no causal claims without an experiment or causal design · no
-> "predicted Google's algorithm" · no client-identifying details · numbers in this report
-> match a fresh re-run.
+
