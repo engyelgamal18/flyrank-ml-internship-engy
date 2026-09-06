@@ -5,11 +5,6 @@
 - **Repo:**  https://github.com/engyelgamal18/flyrank-ml-internship-engy
 - **Date:** September 2026
 
-> Copy this file to `work/capstone_report.md` and fill it in as you build. Sections 1–8
-> mirror the Pass / Needs-Work rubric axes, so nothing here is optional. Sections 0 and 9
-> are **paper sections**: your deployed research paper must carry both, and they're here so
-> you never rebuild them from memory at ship time.
-
 ## 0. Abstract
 
 This project studies how search performance signals can help identify content pages that may need review. I used March 2026 search performance data and evaluated the ranking on the validation period from March 25 to March 31. I created a priority ranking using impressions, CTR and average search position, and compared it with the Week 4 baseline on the same validation period. The new ranking changed the priority of several pages, showing that combining multiple search signals can identify different review opportunities than the baseline. The final ranking is intended as a decision-support tool to help editors decide which pages to review first.
