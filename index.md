@@ -52,25 +52,25 @@ The analysis is limited to March 2026 data, so page performance and ranking prio
 
 ## 7. Ranked Recommendations
 
-The highest-ranked pages should be reviewed first because the ranking identifies pages with combinations of meaningful impressions, low CTR, and weaker average search position.
-Editors can use these signals as reason codes for review. Low CTR can prompt a review of titles and snippets, while weaker search position can prompt a broader review of content and search performance.
-Pages that moved substantially higher in the new ranking than in the Week 4 baseline may also be useful candidates for additional review because the two methods prioritize them differently.
-The ranking determines review priority, not whether a page should automatically be changed. All recommended actions require human review.
-Because search performance can change over time, the ranking should be refreshed when newer data becomes available or when CTR, impressions, search position, or ranking stability changes meaningfully.
+The ranking is used to create a review queue for editors, with higher-priority pages reviewed first. Each recommendation includes reason codes based on the search signals that contributed to its priority, including high impressions, low CTR, and weaker average search position.
+The recommended action depends on these signals. Pages with low CTR can be reviewed for possible title and snippet improvements, while pages with weaker search position can receive a broader content and search-performance review. Pages with high impressions are prioritized because they have greater search visibility and may offer more potential value from editorial review.
+These recommendations are review signals rather than automatic decisions. A high priority score does not mean that a page must be changed, and the ranking does not guarantee that editing a page will improve performance. Editors should review the page and its context before deciding whether any action is appropriate.
+Review effort should generally begin with higher-priority pages, while lower-priority pages may not justify the same level of immediate attention. Pages that moved substantially higher than in the Week 4 baseline may also be useful candidates for additional review because the two ranking approaches prioritize them differently.
+Because page performance can change over time, older rankings may become stale. The review queue should be refreshed when newer search data becomes available or when CTR, impressions, average position, or ranking stability changes meaningfully.
 
 ## 8. Reproducibility
 
 The full project is available in the public GitHub repository:
 
-https://github.com/engyelgamal18/flyrank-ml-internship-engy
+[FlyRank ML Internship — Engy](https://github.com/engyelgamal18/flyrank-ml-internship-engy)
 
-The main capstone notebook is available at:
+The main capstone notebook is available here:
 
-`work/notebooks/capstone.ipynb`
+[Capstone Notebook](https://github.com/engyelgamal18/flyrank-ml-internship-engy/blob/main/work/notebooks/capstone.ipynb)
 
 Supporting assignment notebooks are available in:
 
-`work/notebooks/`
+[work/notebooks/](https://github.com/engyelgamal18/flyrank-ml-internship-engy/tree/main/work/notebooks)
 
 To reproduce the environment:
 
