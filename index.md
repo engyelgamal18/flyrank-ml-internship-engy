@@ -16,7 +16,7 @@ Prioritization matters because editors may have many pages to evaluate but limit
 
 ## 3. Data
 
-The analysis uses March 2026 search performance data. The main signals used in the analysis are impressions, clicks, CTR, and average search position.
+The analysis uses the March 2026 release of the 'fact_content_daily_performance' table from the internship warehouse. The main signals used in the analysis are impressions, clicks, CTR, and average search position.
 For the time-aware analysis, March 1–24 represents the earlier period and March 25–31 is used as the validation period. The Week 4 baseline and the new ranking are compared using the same validation period.
 To keep the analysis public-safe, I did not use client names, URLs, private search queries, or other identifying information. Content IDs were used only to identify pages and were not used as predictive features. Fields such as `trend_direction` and `trend_pct` were excluded to reduce the risk of leakage.
 
@@ -24,9 +24,11 @@ To keep the analysis public-safe, I did not use client names, URLs, private sear
 
 The analysis uses a ranking approach because the objective is to prioritize pages for review rather than make an automatic yes-or-no decision.
 The new priority ranking combines three search performance signals: impressions, CTR, and average search position. The intention is to surface pages that have meaningful search visibility but may be under-capturing clicks or appearing in weaker search positions.
+The priority score is used as a proxy for review priority rather than as a true label of content quality. It ranks potential review candidates but does not classify pages as objectively good or bad.
 The Week 4 baseline ranks pages using impressions and the gap between expected CTR and actual CTR. Pages with more impressions and lower-than-expected CTR receive a higher baseline priority score.
 A time-aware validation design was used rather than relying only on a random split. March 1–24 represents the earlier period, while March 25–31 is the validation period. The baseline and the new ranking are evaluated on the same validation window so that their rankings can be compared consistently.
 Potential leakage fields were reviewed and excluded from the ranking inputs. In particular, fields such as `trend_direction` and `trend_pct` were not used. Client information, private queries, and content identifiers were also excluded as ranking features.
+
 
 ## 5. Results
 
