@@ -1,42 +1,73 @@
-# Capstone Report — CTR / Engagement Opportunity Scoring
+# Prioritizing Content Pages for CTR Review Using Search Performance Signals
 
 - **Author:** Engy Elgamal
-- **Lane:**  CTR / Engagement Opportunity Scoring
-- **Repo:**  https://github.com/engyelgamal18/flyrank-ml-internship-engy
+- **Lane:** CTR / Engagement Opportunity Scoring
+- **Repo:** https://github.com/engyelgamal18/flyrank-ml-internship-engy
 - **Date:** September 2026
 
-## 0. Abstract
+## 1. Abstract
 
-This project studies how search performance signals can help identify content pages that may need review. I used March 2026 search performance data and evaluated the ranking on the validation period from March 25 to March 31. I created a priority ranking using impressions, CTR and average search position, and compared it with the Week 4 baseline on the same validation period. The new ranking changed the priority of several pages, showing that combining multiple search signals can identify different review opportunities than the baseline. The final ranking is intended as a decision-support tool to help editors decide which pages to review first.
+This project examines how search performance signals can be used to prioritize content pages for CTR review. I used March 2026 search performance data and evaluated the ranking on a validation period from March 25 to March 31. I created a priority ranking using impressions, CTR, and average search position and compared it with the Week 4 baseline on the same validation period. The analysis showed substantial differences in page priority between the two methods, with some pages moving much higher in the new ranking. The resulting ranking is intended as a directional decision-support tool to help editors decide which pages to review first.
 
-## 1. Problem framing
+## 2. Introduction / Problem
 
-The goal of this project is to find pages that may need a CTR review. The unit of analysis is a content page, and the output is a priority ranking. This ranking can help an editor decide which pages to review first. A wrong ranking could give priority to a page that does not really need review. Using search data helps compare many pages in a consistent way.
+The goal of this project is to identify content pages that may be worth reviewing for possible CTR improvement. The unit of analysis is a content page, and the final output is a priority ranking that can help an editor decide which pages to review first.
 
-## 2. Data safety
+Prioritization matters because editors may have many pages to evaluate but limited time for manual review. A ranking based on search performance signals provides a consistent way to surface potential review opportunities. However, the ranking is intended to support human judgment rather than determine automatically whether a page should be changed.
 
-I used search performance data such as impressions, clicks, CTR and average position. I did not use client names, URLs or private search queries. Content IDs were only used to identify pages and were not used as features. I also avoided fields such as trend direction and trend pct to reduce the risk of data leakage. No client identifying information is included in the work.
+## 3. Data
 
-## 3. Baseline
-The Week 4 baseline ranked pages using impressions and the gap between expected CTR and actual CTR. Pages with many impressions and lower than expected CTR received a higher score. This was a fair baseline because it used the same search data and the same validation period as the Week 5 ranking method. The baseline gave each page a score and a rank that could be compared with the new ranking.
+The analysis uses March 2026 search performance data. The main signals used in the analysis are impressions, clicks, CTR, and average search position.
 
-## 4. Model / analysis
+For the time-aware analysis, March 1–24 represents the earlier period and March 25–31 is used as the validation period. The Week 4 baseline and the new ranking are compared using the same validation period.
 
-I used a ranking analysis because my goal is to find pages that may need review. I used impressions, CTR, and average search position to create a priority score. I did not use client information or private data. I used a time-aware split, with March 1–24 as the earlier period and March 25–31 for validation. The priority score is used to rank pages for review.
+To keep the analysis public-safe, I did not use client names, URLs, private search queries, or other identifying information. Content IDs were used only to identify pages and were not used as predictive features. Fields such as `trend_direction` and `trend_pct` were excluded to reduce the risk of leakage.
 
-## 5. Evaluation
+## 4. Methodology
 
-The Week 4 baseline and the new ranking were compared using the same validation period: March 25–31, 2026. The new method changed the priority of many pages. For example, one page moved from baseline rank 136 to new rank 1. Another page moved from baseline rank 300 to new rank 9. Some pages with a baseline score of zero also moved to the top of the new ranking. This shows that the new method can find review opportunities that the baseline may miss. These results are directional. The ranking is a decision-support tool and does not prove that the new method is always better.
+The analysis uses a ranking approach because the objective is to prioritize pages for review rather than make an automatic yes-or-no decision.
 
-## 6. Interpretation
+The new priority ranking combines three search performance signals: impressions, CTR, and average search position. The intention is to surface pages that have meaningful search visibility but may be under-capturing clicks or appearing in weaker search positions.
 
-This analysis has some limitations. The priority ranking is based only on search performance signals such as impressions, CTR and average position. It does not include content quality, conversions or business value. A high priority score does not prove that changing a page will improve its CTR. The ranking should be used as a guide to help editors decide which pages to review first. The analysis is limited to March 2026 data, so the ranking should be reviewed again when newer data becomes available.
+The Week 4 baseline ranks pages using impressions and the gap between expected CTR and actual CTR. Pages with more impressions and lower-than-expected CTR receive a higher baseline priority score.
 
-## 7. Recommendation
+A time-aware validation design was used rather than relying only on a random split. March 1–24 represents the earlier period, while March 25–31 is the validation period. The baseline and the new ranking are evaluated on the same validation window so that their rankings can be compared consistently.
 
-The highest-ranked pages should be reviewed first. These pages have a combination of high impressions, low CTR, and weaker average search position.
-Editors can review the page title, metadata, and content to look for possible CTR improvements.
-Pages that moved much higher in the new ranking than in the baseline should receive extra attention because the new method identified them as higher-priority review opportunities. These recommendations are a guide and not an automatic decision.
+Potential leakage fields were reviewed and excluded from the ranking inputs. In particular, fields such as `trend_direction` and `trend_pct` were not used. Client information, private queries, and content identifiers were also excluded as ranking features.
+
+## 5. Results
+
+The Week 4 baseline and the new ranking were compared on the same validation period: March 25–31, 2026.
+
+The two methods produced substantially different priorities for some pages. For example, one page moved from baseline rank 136 to new rank 1. Another moved from baseline rank 300 to new rank 9. Some pages with a baseline score of zero also appeared near the top of the new ranking.
+
+These differences show that the two ranking approaches surface different candidates for review. They do not establish that the new ranking is universally better than the baseline.
+
+### Rank movement among the top recommendations
+
+The comparison of baseline and new ranks shows that several pages moved substantially higher under the new ranking. The size of the changes also varies considerably across pages, indicating that the new combination of search signals prioritizes some review candidates very differently from the baseline.
+
+These results are directional and should be interpreted as evidence for prioritization and human review, not as evidence that changing the surfaced pages will improve CTR.
+
+## 6. Limitations & Honest Framing
+
+This analysis has several limitations. The priority ranking is based only on search performance signals such as impressions, CTR, and average search position. It does not directly measure content quality, conversions, business value, or the reason a page has a particular CTR.
+
+A high priority score therefore does not prove that a page should be changed or that changing it will improve CTR. The observed differences between the baseline and new ranking also do not prove that the new ranking is always better.
+
+The analysis is limited to March 2026 data, so page performance and ranking priorities may change as newer data becomes available. The results should therefore be treated as directional decision support and reviewed by a person before any content action is taken.
+
+## 7. Ranked Recommendations
+
+The highest-ranked pages should be reviewed first because the ranking identifies pages with combinations of meaningful impressions, low CTR, and weaker average search position.
+
+Editors can use these signals as reason codes for review. Low CTR can prompt a review of titles and snippets, while weaker search position can prompt a broader review of content and search performance.
+
+Pages that moved substantially higher in the new ranking than in the Week 4 baseline may also be useful candidates for additional review because the two methods prioritize them differently.
+
+The ranking determines review priority, not whether a page should automatically be changed. All recommended actions require human review.
+
+Because search performance can change over time, the ranking should be refreshed when newer data becomes available or when CTR, impressions, search position, or ranking stability changes meaningfully.
 
 ## 8. Reproducibility
 
@@ -46,9 +77,11 @@ https://github.com/engyelgamal18/flyrank-ml-internship-engy
 
 The main capstone notebook is available at:
 
-work/notebooks/capstone.ipynb
+`work/notebooks/capstone.ipynb`
 
-The supporting weekly notebooks are also available in the work/notebooks/ folder.
+Supporting assignment notebooks are available in:
+
+`work/notebooks/`
 
 To reproduce the environment:
 
@@ -57,11 +90,11 @@ git clone https://github.com/engyelgamal18/flyrank-ml-internship-engy.git
 cd flyrank-ml-internship-engy
 pip install -r requirements.txt
 ```
-The FlyRank dataset requires a Hugging Face read token saved as HF_TOKEN. This project uses ranking analysis and does not train a random model, so I did not use a random seed. I did not use a sealed holdout test.
 
-## 9. Acknowledgments & data credit
+The FlyRank dataset requires a Hugging Face read token stored as `HF_TOKEN`.
 
-Built on the [FlyRank ML Internship dataset](https://flyrank.ai/)
----
+This project uses a ranking analysis rather than a randomly initialized model, so a random seed is not required for the ranking calculation. The analysis uses a time-aware validation period and does not claim evaluation on a sealed holdout test.
 
+## 9. Acknowledgments & Data Credit
 
+Built on the [FlyRank ML Internship dataset](https://flyrank.ai/).
