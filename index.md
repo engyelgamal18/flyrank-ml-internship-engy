@@ -45,6 +45,10 @@ These differences show that the two ranking approaches surface different candida
 
 ### Rank movement among the top recommendations
 
+![Rank improvement for the top 10 recommended pages](rank_improvement_top10.png)
+
+*Figure 1. Rank improvement for the top 10 recommended pages compared with the Week 4 baseline.*
+
 The comparison of baseline and new ranks shows that several pages moved substantially higher under the new ranking. The size of the changes also varies considerably across pages, indicating that the new combination of search signals prioritizes some review candidates very differently from the baseline.
 
 These results are directional and should be interpreted as evidence for prioritization and human review, not as evidence that changing the surfaced pages will improve CTR.
