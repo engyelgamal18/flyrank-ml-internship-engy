@@ -6,13 +6,11 @@
 - **Date:** September 2026
 
 ## 1. Abstract
-
-This project examines how search performance signals can be used to prioritize content pages for CTR review. I used March 2026 search performance data and evaluated the ranking on a validation period from March 25 to March 31. I created a priority ranking using impressions, CTR, and average search position and compared it with the Week 4 baseline on the same validation period. The analysis showed substantial differences in page priority between the two methods, with some pages moving much higher in the new ranking. The resulting ranking is intended as a directional decision-support tool to help editors decide which pages to review first.
+This project addresses a practical FlyRank content problem: when many content pages need evaluation, editors need a consistent way to decide which pages to review first for potential CTR improvement. I used March 2026 search performance data and evaluated the ranking on a validation period from March 25 to March 31. I created a priority ranking using impressions, CTR, and average search position and compared it with the Week 4 baseline on the same validation period. The analysis showed substantial differences in page priority between the two methods, with some pages moving much higher in the new ranking. The resulting ranking is intended as a directional decision-support tool that can help FlyRank editors prioritize manual content review rather than automatically determine which pages should be changed.
 
 ## 2. Introduction / Problem
-
-The goal of this project is to identify content pages that may be worth reviewing for possible CTR improvement. The unit of analysis is a content page, and the final output is a priority ranking that can help an editor decide which pages to review first.
-Prioritization matters because editors may have many pages to evaluate but limited time for manual review. A ranking based on search performance signals provides a consistent way to surface potential review opportunities. However, the ranking is intended to support human judgment rather than determine automatically whether a page should be changed.
+The goal of this project is to help with a real FlyRank content problem: deciding which content pages should be reviewed first for possible CTR improvement. FlyRank can have many content pages to review, so it can be difficult for editors to know where to focus their time first.
+In this project, each content page is analyzed using search performance signals, and the final output is a priority ranking. This ranking helps editors find pages that may be worth reviewing first. It is meant to support human review and does not automatically decide that a page needs to be changed.
 
 ## 3. Data
 
